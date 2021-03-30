@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+  <h1> Sanctuarys for animals with bounties on thier heads. </h1>
+  <form action="/data" method="POST">
+    <input type="text" placeholder="Sanctuary Name" name="Name">
+    <input type="text" placeholder="Address" name="Address">
+    <input type="text" placeholder="State" name="State">
+    <input type="text" placeholder="Phone Number" name="Phone">
+    <input type="text" placeholder="count ('# of animals')" name="Count">
+    <input type="text" placeholder="Website" name="Website">
+    <input type="text" placeholder="Email" name="Email">
+    <input type="text" placeholder="Instagram" name="Instagram">
+    <input type="text" placeholder="Facebook" name="Facebook">
+    <input type="text" placeholder="Donation Link" name="Donation">
+    <input type="text" placeholder="Merch (database table)" name="Merch">
+    <input type="text" placeholder="Fundraiser (database table)" name="Fundraiser">
+    <input type="text" placeholder="About / Type" name="About">
+    <br />
+    <br />
+    <button type="submit">Submit</button>
+  </form>
+  <h2> DATA </h2>
+  <div id="message"></div>
+
+  <ul class="data">
+    <!-- Loop through quotes -->
+    <% for(var i = 0; i < data.length; i++) {%>
+      <li class="data">
+        <!-- Output name from the iterated quote object -->
+        <span><%= data[i].name %></span>:
+        <!-- Output quote from the iterated quote object -->
+        <span><%= data[i].Address %></span>
+         <!-- Output name from the iterated quote object -->
+         <span><%= data[i].State %></span>:
+         <!-- Output quote from the iterated quote object -->
+         <span><%= data[i].Phone %></span>
+          <!-- Output name from the iterated quote object -->
+        <span><%= data[i].Count %></span>:
+        <!-- Output quote from the iterated quote object -->
+        <span><%= data[i].Website %></span>
+         <!-- Output name from the iterated quote object -->
+         <span><%= data[i].Email %></span>:
+         <!-- Output quote from the iterated quote object -->
+         <span><%= data[i].Instagram %></span>
+          <!-- Output name from the iterated quote object -->
+        <span><%= data[i].Facebook %></span>:
+        <!-- Output quote from the iterated quote object -->
+        <span><%= data[i].Donation %></span>
+         <!-- Output name from the iterated quote object -->
+         <span><%= data[i].Merch %></span>:
+         <!-- Output quote from the iterated quote object -->
+         <span><%= data[i].Fundraiser %></span>
+         <!-- Output quote from the iterated quote object -->
+         <span><%= data[i].About %></span>
+      </li>
+    <% } %>
+  </ul>
+  <div>
+    <h2>Edit Sanctuary</h2>
+    <p>
+      Replace Selection
+    </p>
+    <button id="update-button">Replace</button>
+  </div>
+  <div>
+    <h2>Remove Sanctuary</h2>
+    <p>
+      Delete selection
+    </p>
+    <button id="delete-button">Delete</button>
+  </div>
+  <script src="/main.js"></script>
+</body>
+</html>
