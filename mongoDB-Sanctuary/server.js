@@ -34,14 +34,15 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     
     //delete
     app.delete('/data', (req, res) => {
+      console.log(req.body.Name);
       dataCollection.deleteOne(
-        { name: req.body.name },
+        { Name: req.body.Name },
       )
       .then(result => {
         if (result.deletedCount === 0) {
-          return res.json('No quote to delete')
+          return res.json('Nothing to delete')
         }
-        res.json(`Deleted Darth Vadar's quote`)
+        res.json(`Deleted`)
       })
       .catch(error => console.error(error))
     })

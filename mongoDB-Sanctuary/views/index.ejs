@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MY APP</title>
+  <title>ADMIN SANCTUARY</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
-  <h1> Sanctuarys for animals with bounties on thier heads. </h1>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+  
+  <h1> Sanctuarys for animals </h1>
   <form action="/data" method="POST">
     <input type="text" placeholder="Sanctuary Name" name="Name">
     <input type="text" placeholder="Address" name="Address">
@@ -28,12 +32,12 @@
   <h2> DATA </h2>
   <div id="message"></div>
 
-  <ul class="data">
+  <ul class="data1">
     <!-- Loop through quotes -->
     <% for(var i = 0; i < data.length; i++) {%>
-      <li class="data">
+      <li class="data1">
         <!-- Output name from the iterated quote object -->
-        <span><%= data[i].name %></span>:
+        <span><%= data[i].Name %></span>:
         <!-- Output quote from the iterated quote object -->
         <span><%= data[i].Address %></span>
          <!-- Output name from the iterated quote object -->
@@ -61,20 +65,52 @@
       </li>
     <% } %>
   </ul>
-  <div>
+ <!-- <div>
     <h2>Edit Sanctuary</h2>
     <p>
       Replace Selection
     </p>
     <button id="update-button">Replace</button>
   </div>
-  <div>
+  <div>-->
     <h2>Remove Sanctuary</h2>
-    <p>
-      Delete selection
-    </p>
+    <form action="/data" method="DELETE">
+      <input  id="remove" type="text" placeholder="Sanctuary Name">
+    </form>
+    <br>
     <button id="delete-button">Delete</button>
   </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">NAME</th>
+        <th scope="col">ADDRESS</th>
+        <th scope="col">STATE</th>
+        <th scope="col">STATE</th>
+        <th scope="col">PHONE</th>
+        <th scope="col">COUNT</th>
+        <th scope="col">WEBSITE</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">INSTAGRAM</th>
+        <th scope="col">Facebook</th>
+        <th scope="col">DONATION</th>
+        <th scope="col">MERCH</th>
+        <th scope="col">FUNDRAISER</th>
+        <th scope="col">ABOUT</th>
+      </tr>
+    </thead>
+    <tbody class="data">
+      <tr class="data">
+        <% for(var i = 0; i < data.length; i++) {%>
+        <th scope="row">1</th>
+        <td><%= data[i].Name %></td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table>
   <script src="/main.js"></script>
 </body>
 </html>
