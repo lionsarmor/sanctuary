@@ -7,110 +7,99 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-  
-  <h1> Sanctuarys for animals </h1>
-  <form action="/data" method="POST">
-    <input type="text" placeholder="Sanctuary Name" name="Name">
-    <input type="text" placeholder="Address" name="Address">
-    <input type="text" placeholder="State" name="State">
-    <input type="text" placeholder="Phone Number" name="Phone">
-    <input type="text" placeholder="count ('# of animals')" name="Count">
-    <input type="text" placeholder="Website" name="Website">
-    <input type="text" placeholder="Email" name="Email">
-    <input type="text" placeholder="Instagram" name="Instagram">
-    <input type="text" placeholder="Facebook" name="Facebook">
-    <input type="text" placeholder="Donation Link" name="Donation">
-    <input type="text" placeholder="Merch (database table)" name="Merch">
-    <input type="text" placeholder="Fundraiser (database table)" name="Fundraiser">
-    <input type="text" placeholder="About / Type" name="About">
-    <br />
-    <br />
-    <button type="submit">Submit</button>
-  </form>
-  <h2> DATA </h2>
-  <div id="message"></div>
-
-  <ul class="data1">
-    <!-- Loop through quotes -->
-    <% for(var i = 0; i < data.length; i++) {%>
-      <li class="data1">
-        <!-- Output name from the iterated quote object -->
-        <span><%= data[i].Name %></span>:
-        <!-- Output quote from the iterated quote object -->
-        <span><%= data[i].Address %></span>
-         <!-- Output name from the iterated quote object -->
-         <span><%= data[i].State %></span>:
-         <!-- Output quote from the iterated quote object -->
-         <span><%= data[i].Phone %></span>
-          <!-- Output name from the iterated quote object -->
-        <span><%= data[i].Count %></span>:
-        <!-- Output quote from the iterated quote object -->
-        <span><%= data[i].Website %></span>
-         <!-- Output name from the iterated quote object -->
-         <span><%= data[i].Email %></span>:
-         <!-- Output quote from the iterated quote object -->
-         <span><%= data[i].Instagram %></span>
-          <!-- Output name from the iterated quote object -->
-        <span><%= data[i].Facebook %></span>:
-        <!-- Output quote from the iterated quote object -->
-        <span><%= data[i].Donation %></span>
-         <!-- Output name from the iterated quote object -->
-         <span><%= data[i].Merch %></span>:
-         <!-- Output quote from the iterated quote object -->
-         <span><%= data[i].Fundraiser %></span>
-         <!-- Output quote from the iterated quote object -->
-         <span><%= data[i].About %></span>
-      </li>
-    <% } %>
-  </ul>
- <!-- <div>
-    <h2>Edit Sanctuary</h2>
-    <p>
-      Replace Selection
-    </p>
-    <button id="update-button">Replace</button>
-  </div>
-  <div>-->
-    <h2>Remove Sanctuary</h2>
-    <form action="/data" method="DELETE">
-      <input  id="remove" type="text" placeholder="Sanctuary Name">
+  <header style="font-size: 30px; font-weight:800; background-color:seagreen;padding-left:5%;color:seashell;">SANCTUARY ADMIN PAGE</header>
+  <div class="page-border">
+    <h1> DATA </h1>
+    <div style="height: 300px; overflow: scroll;">
+      <table style="white-space: nowrap;" class="table data">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">State</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Count</th>
+            <th scope="col">Website</th>
+            <th scope="col">Email</th>
+            <th scope="col">Instagram</th>
+            <th scope="col">Facebook</th>
+            <th scope="col">Donation</th>
+            <th scope="col">Merch</th>
+            <th scope="col">Fundraiser</th>
+            <th scope="col">About</th>
+          </tr>
+        </thead>
+        <% for(var i=0; i < data.length; i++) { %>
+          <tbody>
+            <tr class="table-primary">
+              <td><%= data[i].Name %></td>
+              <td><%= data[i].Address %></td>
+              <td><%= data[i].State %></td>
+              <td><%= data[i].Phone %></td>
+              <td><%= data[i].Count %></td>
+              <td><%= data[i].Website %></td>
+              <td><%= data[i].Email %></td>
+              <td><%= data[i].Instagram %></td>
+              <td><%= data[i].Facebook %></td>
+              <td><%= data[i].Donation %></td>
+              <td><%= data[i].Merch %></td>
+              <td><%= data[i].Fundraiser %></td>
+              <td><%= data[i].About %></td>
+            </tr>
+          </tbody>
+        <% } %>
+        </table>  
+    </div>
+  <br >
+  <div style="color: red;" id="message"></div>
+    <h1>Add Sanctuary</h1>
+    <form action="/data" method="POST">
+      <input type="text" placeholder="Sanctuary Name" name="Name">
+      <input type="text" placeholder="Address" name="Address">
+      <input type="text" placeholder="State" name="State">
+      <input type="text" placeholder="Phone Number" name="Phone">
+      <input type="text" placeholder="count ('# of animals')" name="Count">
+      <input type="text" placeholder="Website" name="Website">
+      <input type="text" placeholder="Email" name="Email">
+      <input type="text" placeholder="Instagram" name="Instagram">
+      <input type="text" placeholder="Facebook" name="Facebook">
+      <input type="text" placeholder="Donation Link" name="Donation">
+      <input type="text" placeholder="Merch (database table)" name="Merch">
+      <input type="text" placeholder="Fundraiser (database table)" name="Fundraiser">
+      <input type="text" placeholder="About / Type" name="About">
+      <br />
+      <br />
+      <button type="submit">Submit</button>
     </form>
     <br>
-    <button id="delete-button">Delete</button>
+   <!-- <div>
+      <h2>Edit Sanctuary</h2>
+      <p>
+        Replace Selection
+      </p>
+      <button id="update-button">Replace</button>
+    </div>
+    <div>-->
+      <h2>Remove Sanctuary</h2>
+      <form action="/data" method="DELETE">
+        <input  id="remove" type="text" placeholder="Sanctuary Name">
+      </form>
+      <br>
+      <button id="delete-button">Delete</button>
+    </div>
   </div>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">NAME</th>
-        <th scope="col">ADDRESS</th>
-        <th scope="col">STATE</th>
-        <th scope="col">STATE</th>
-        <th scope="col">PHONE</th>
-        <th scope="col">COUNT</th>
-        <th scope="col">WEBSITE</th>
-        <th scope="col">EMAIL</th>
-        <th scope="col">INSTAGRAM</th>
-        <th scope="col">Facebook</th>
-        <th scope="col">DONATION</th>
-        <th scope="col">MERCH</th>
-        <th scope="col">FUNDRAISER</th>
-        <th scope="col">ABOUT</th>
-      </tr>
-    </thead>
-    <tbody class="data">
-      <tr class="data">
-        <% for(var i = 0; i < data.length; i++) {%>
-        <th scope="row">1</th>
-        <td><%= data[i].Name %></td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-    </tbody>
-  </table>
   <script src="/main.js"></script>
+  <style>
+    .page-border {
+      padding: 5%;
+    }
+  </style>
 </body>
 </html>
